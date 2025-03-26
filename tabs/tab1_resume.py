@@ -1,6 +1,6 @@
 import streamlit as st
 import matplotlib.pyplot as plt
-from logic import fetch_lebron_game_logs, calculate_averages, get_top_games
+from logic.logic import fetch_lebron_game_logs, calculate_averages, get_top_games
 
 def render(tab):
     with tab:
