@@ -1,7 +1,14 @@
 import sqlite3
 import hashlib
 
+import os
+
+# Create data/ directory if it doesn't exist
+if not os.path.exists("data"):
+    os.makedirs("data")
+
 DB_PATH = "data/users.db"
+
 
 # === INIT ===
 def init_user_db():
