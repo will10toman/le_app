@@ -1,7 +1,6 @@
 import streamlit as st
 from db import init_user_db, authenticate_user, save_user, hash_password
-from tabs import tab1_resume, tab3_bronify, tab4_defend, tab5_letalk, tab6_discussion
-from lebron_next_game import render_tab2
+from tabs import tab1_resume, tab2_lelive, tab3_bronify, tab4_defend, tab5_letalk, tab6_discussion
 
 # --- App Config ---
 st.set_page_config(page_title="LeApp | The LeBron Experience", layout="wide")
@@ -88,7 +87,7 @@ tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
 
 # Tab routers
 tab1_resume.render(tab1)
-render_tab2(tab2)
+tab2_lelive.render(tab2)
 tab3_bronify.render(tab3)
 tab4_defend.render(tab4)
 tab5_letalk.render(tab5)
