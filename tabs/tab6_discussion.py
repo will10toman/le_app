@@ -5,7 +5,7 @@ from ui.chat_ui import render_chat_message, inject_chat_styles
 from utils.chat_utils import parse_message, get_user_color, get_msg_id
 from datetime import datetime
 
-def render_tab6(tab6):
+def render(tab6):
     with tab6:
         init_db()
         st.header("💬 LeDiscussion: Group Chat for LeBron Fans")
