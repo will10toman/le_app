@@ -1,5 +1,5 @@
 import streamlit as st
-from auth import init_db, authenticate, save_user, hash_password
+from db import init_user_db, authenticate_user, save_user, hash_password
 from tabs import tab1_resume, tab3_bronify, tab4_defend, tab5_letalk, tab6_discussion
 from lebron_next_game import render_tab2
 
@@ -20,7 +20,7 @@ def set_custom_favicon(path):
 
 set_custom_favicon(favicon_path)
 
-init_db()
+init_user_db()
 
 # --- Session State Setup ---
 if "authenticated" not in st.session_state:
@@ -39,7 +39,7 @@ if not st.session_state.authenticated:
         username = st.text_input("Username")
         password = st.text_input("Password", type="password")
         if st.button("Login"):
-            if authenticate(username, password):
+            if authenticate_user(username, password):
                 st.session_state.authenticated = True
                 st.session_state.current_user = username
                 st.rerun()
