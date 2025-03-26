@@ -1,0 +1,10 @@
+streamlit
+pandas
+matplotlib
+requests
+openpyxl
+streamlit-autorefresh
+beautifulsoup4
+nba_api
+pytz
+
