@@ -1,0 +1,43 @@
+/* Light mode */
+.stApp {
+    background-color: #f9f9f9;
+    color: #111;
+}
+h1, h2, h3, h4, p, span, label {
+    color: #222;
+}
+.stMarkdown > div {
+    background-color: #fff;
+    color: #111;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+}
+input, textarea {
+    background-color: #f2f2f2;
+    color: #111;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+    .stApp {
+        background-color: #0e1117;
+        color: #f0f0f0;
+    }
+    h1, h2, h3, h4, p, span, label {
+        color: #f0f0f0;
+    }
+    .stMarkdown > div {
+        background-color: #1e1e1e;
+        color: #f0f0f0;
+        box-shadow: 0 1px 6px rgba(255,255,255,0.1);
+    }
+    input, textarea {
+        background-color: #2e2e2e;
+        color: #fff;
+    }
+    section[data-testid="stSidebar"] {
+        background-color: #1a1a1a;
+        color: #f0f0f0;
+    }
+}
