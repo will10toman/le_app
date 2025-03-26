@@ -8,6 +8,11 @@ def render(tab):
 
         # Get and prep data
         career_df = fetch_lebron_game_logs()
+
+        if career_df.empty or "GAME_DATE" not in career_df.columns:
+            st.error("⚠️ Failed to load LeBron's data. Please try again later.")
+            return
+
         career_df["GAME_DATE"] = pd.to_datetime(career_df["GAME_DATE"])
         career_df = career_df.sort_values("GAME_DATE")
 
