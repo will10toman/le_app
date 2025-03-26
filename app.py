@@ -68,7 +68,9 @@ if st.sidebar.button("Logout"):
     st.rerun()
 
 # Inject styling
-st.markdown(open("ui/theme.css").read(), unsafe_allow_html=True)
+with open("ui/theme.css") as f:
+    st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
 
 # Title & image banner
 st.title("👑 LeApp: The LeBron James Experience 👑")
