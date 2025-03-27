@@ -70,17 +70,29 @@ def render(tab2):
         """, unsafe_allow_html=True)
 
 
-        # Countdown
-        time_left = game["datetime"] - datetime.now(pytz.timezone("US/Eastern"))
+        # Countdown logic
+        now = datetime.now(pytz.timezone("US/Eastern"))
+        game_time = game["datetime"]
+        time_left = game_time - now
+        total_seconds = (game_time - now).total_seconds()
+
+        # Metrics
         days, seconds = time_left.days, time_left.seconds
         hours = seconds // 3600
         minutes = (seconds % 3600) // 60
-        seconds = seconds % 60
 
         st.markdown("### ⏳ Countdown to Tip-Off")
         st.metric("Days", days)
         st.metric("Hours", hours)
         st.metric("Minutes", minutes)
+
+        # Progress bar visualization
+        total_until_game = (game_time - now).total_seconds()
+        total_window = 7 * 24 * 3600  # Assume hype window is 7 days before tipoff
+        percent_complete = 100 - min(100, max(0, (total_until_game / total_window) * 100))
+
+        st.markdown("#### 🔥 Hype Level")
+        st.progress(percent_complete / 100)
 
         # LeBron image
         st.image("https://i.imgur.com/16Kjx2u.jpeg", caption="The Calm Before the Storm", use_container_width=True)
