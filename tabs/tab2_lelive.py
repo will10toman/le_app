@@ -93,10 +93,38 @@ def render(tab2):
 
         st.markdown("#### 🔥 Hype Level")
         st.progress(percent_complete / 100)
+# 🚨 Flashing Game Mode Alert (if < 1 hour away)
+        if total_seconds <= 3600:
+            st.markdown("""
+            <div style='
+                background: repeating-linear-gradient(
+                    -45deg,
+                    #ff1744,
+                    #ff1744 10px,
+                    #d50000 10px,
+                    #d50000 20px
+                );
+                color: white;
+                padding: 1rem;
+                font-size: 1.5rem;
+                font-weight: bold;
+                text-align: center;
+                border-radius: 10px;
+                animation: pulse 1s infinite;
+            '>
+                🚨 GAME MODE ACTIVATED: LeBron hits the court in under 1 hour! 🚨
+            </div>
+
+            <style>
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.02); }
+                100% { transform: scale(1); }
+            }
+            </style>
+            """, unsafe_allow_html=True)
 
         # LeBron image
         st.image("https://i.imgur.com/16Kjx2u.jpeg", caption="The Calm Before the Storm", use_container_width=True)
 
-
-        st.caption("👑 Auto-refreshing every 60 seconds to keep hype levels maxed.")
 
