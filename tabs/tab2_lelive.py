@@ -39,7 +39,7 @@ def get_lebron_next_game():
     except Exception as e:
         return {"error": str(e)}
 
-def render_tab2(tab2):
+def render(tab2):
     with tab2:
         st_autorefresh(interval=60000, key="lebron_next_game_refresh")
         st.markdown("## 🕒 The Countdown to Greatness Begins")
@@ -54,14 +54,21 @@ def render_tab2(tab2):
             st.error(f"⚠️ {game['error']}")
             return
 
-        # Hype Text
         st.markdown(f"""
-        <div style='font-size:1.2rem; background-color:#111; padding:1rem; border-radius:10px; color:white; text-align:center'>
-            <strong>🔥 The King is gearing up.</strong><br>
-            <span style='font-size:1.1rem;'>LeBron faces off against <span style='color:gold;'>{game['opponent']}</span> {game['location']} on</span><br>
-            <span style='font-size:1.4rem; color:lightgreen'><b>{game['formatted_time']}</b></span>
+        <div style='
+            padding: 1.2rem;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #3a0ca3, #7209b7);
+            color: white;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        '>
+            <div style='font-size:1.3rem; font-weight: bold;'>🔥 The King is gearing up.</div>
+            <div style='font-size:1.1rem; margin-top:0.5rem;'>LeBron faces off against <span style='color:#fdd835'>{game['opponent']}</span> <b>{game['location']}</b> on</div>
+            <div style='font-size:1.5rem; font-weight:bold; margin-top:0.3rem;'>{game['formatted_time']}</div>
         </div>
         """, unsafe_allow_html=True)
+
 
         # Countdown
         time_left = game["datetime"] - datetime.now(pytz.timezone("US/Eastern"))
@@ -76,7 +83,8 @@ def render_tab2(tab2):
         st.metric("Minutes", minutes)
 
         # LeBron image
-        st.image("https://i.imgur.com/wHjHQMZ.jpeg", width=300, caption="The Calm Before the Storm", use_column_width="always")
+        st.image("https://i.imgur.com/16Kjx2u.jpeg", caption="The Calm Before the Storm", use_container_width=True)
+
 
         st.caption("👑 Auto-refreshing every 60 seconds to keep hype levels maxed.")
 

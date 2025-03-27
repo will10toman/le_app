@@ -2,6 +2,7 @@ import streamlit as st
 from db import init_user_db, authenticate_user, save_user, hash_password
 from tabs import tab1_resume, tab2_lelive, tab3_bronify, tab4_defend, tab5_letalk, tab6_discussion
 
+
 # --- App Config ---
 st.set_page_config(page_title="LeApp | The LeBron Experience", layout="wide")
 import base64
@@ -73,7 +74,8 @@ with open("ui/theme.css") as f:
 
 # Title & image banner
 st.title("👑 LeApp: The LeBron James Experience 👑")
-st.markdown(open("ui/lebron_header.html").read(), unsafe_allow_html=True)
+with open("ui/lebron_header.html", "r", encoding="utf-8") as f:
+    st.markdown(f.read(), unsafe_allow_html=True)
 
 # Tabs
 tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
